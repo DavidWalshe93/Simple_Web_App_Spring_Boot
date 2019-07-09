@@ -1,9 +1,6 @@
 package learning.spring.spring5_web_app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +19,10 @@ public class Book {
     private String publisher;
 
     @ManyToMany
+    @JoinTable(name="author_book",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
     private Set<Author> authors = new HashSet<>();
 
     public Book() {
