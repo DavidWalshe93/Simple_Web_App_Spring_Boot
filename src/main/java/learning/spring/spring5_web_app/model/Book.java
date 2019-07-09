@@ -9,6 +9,8 @@ import java.util.Set;
  * Developer: David Walshe
  * Date: 09/07/2019
  */
+
+// Makes persistent with Hibernate JPA
 @Entity
 public class Book {
 
