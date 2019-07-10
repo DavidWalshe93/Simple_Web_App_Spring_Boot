@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 @Entity
 public class Publisher {
-    pri vate String name;
+    private String name;
     private String address;
 
     public String getName() {
