@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Spring Framework Learning</title>
 </head>
 <body>
-<h2>Tomcat List</h2>
+<h2>Book List</h2>
 
 <table>
     <tr>
         <th>ID</th>
         <td>Title</td>
         <td>Author</td>
+        <td>Publisher</td>
     </tr>
     <tr th:each="book : ${books}">
         <td th:text="${book.id}">123</td>
         <td th:text="${book.title}">Spring in Action</td>
+        <!--<td th:text="${book.author}">YXZ</td>-->
         <td th:text="${book.publisher.name}">ABC</td>
     </tr>
 </table>
