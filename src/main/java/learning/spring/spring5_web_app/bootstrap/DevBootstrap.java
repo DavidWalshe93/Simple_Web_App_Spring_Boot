@@ -5,6 +5,7 @@ import learning.spring.spring5_web_app.model.Book;
 import learning.spring.spring5_web_app.model.Publisher;
 import learning.spring.spring5_web_app.repositories.AuthorRepository;
 import learning.spring.spring5_web_app.repositories.BookRepository;
+import learning.spring.spring5_web_app.repositories.PublisherRepository;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -18,11 +19,13 @@ import org.springframework.stereotype.Component;
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private AuthorRepository authorRepository;
+    private PublisherRepository publisherRepository;
     private BookRepository bookRepository;
 
     // Autowired by spring framework
-    public DevBootstrap(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public DevBootstrap(AuthorRepository authorRepository, PublisherRepository publisherRepository, BookRepository bookRepository) {
         this.authorRepository = authorRepository;
+        this.publisherRepository = publisherRepository;
         this.bookRepository = bookRepository;
     }
 
@@ -41,6 +44,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         mobyDick.getAuthors().add(hermin);
 
         authorRepository.save(hermin);
+        publisherRepository.save(harperCollins);
         bookRepository.save(mobyDick);
 
         Author tolkien = new Author("John", "Tolkien");
@@ -50,6 +54,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         lordOfTheRings.getAuthors().add(tolkien);
 
         authorRepository.save(tolkien);
+        publisherRepository.save(allenUnwin);
         bookRepository.save(lordOfTheRings);
     }
 }
